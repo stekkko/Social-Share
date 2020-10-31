@@ -1,0 +1,64 @@
+<idea-plugin>
+    <id>com.stekkko.socialshare</id>
+    <name>SocialShare</name>
+    <version>1.0-SNAPSHOT</version>
+    <vendor email="suver.www@mail.ru" url="http://www.github.con/stekkko">stekkko github</vendor>
+
+    <description><![CDATA[
+    This plugin will share your code on pastebin.com and then share on any other social media via link.
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <!--<actions>-->
+        <!--<group id="SocialShare.CopyLinkToClipboardAction" text="SocialShare" description="shares to pastebin then to social media">-->
+
+            <!--<action class="com.stekkko.social.share.CopyPastebinLinkToClipboardActionoClipboardAction" id="SocialShare.Actions.CopyLinkToClipboardAction" text="Social Share"/>;-->
+        <!--</group>-->
+    <!--</actions>-->
+
+    <actions>
+
+        <group id="SocialShare" text="SocialShare" description="shares your selected code">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="com.stekkko.social.share.CopyLinkToClipboardAction"
+                    class="com.stekkko.social.share.CopyLinkToClipboardAction"
+                    text="Share selected on pastebin.com"
+                    description="This plugin shares your selected code to pastebin.com and then you can copy link or share it in social media">
+
+                <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="PasteMultiple"/>
+                <add-to-group group-id="ConsoleEditorPopupMenu" anchor="after" relative-to-action="CutCopyPasteGroup"/>
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl BACK_SLASH" second-keystroke="ctrl P"/>
+            </action>
+            <action id="com.stekkko.social.share.ShareWithTwitterAction"
+                    class="com.stekkko.social.share.ShareWithTwitterAction"
+                    text="Share selected on Twitter"
+                    description="Shares pastebin link in new tweet">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl BACK_SLASH" second-keystroke="ctrl T"/>
+            </action>
+            <action id="com.stekkko.social.share.ShareWithVkAction"
+                    class="com.stekkko.social.share.ShareWithVkAction"
+                    text="Share selected on Vk"
+                    description="Shares pastebin link in new post">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl BACK_SLASH" second-keystroke="ctrl V"/>
+            </action>
+            <action id="com.stekkko.social.share.ShareWithFacebookAction"
+                    class="com.stekkko.social.share.ShareWithFacebookAction"
+                    text="Share selected on Facebook"
+                    description="Shares pastebin link in new post">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl BACK_SLASH" second-keystroke="ctrl F"/>
+            </action>
+        </group>
+
+
+    </actions>
+
+</idea-plugin>
